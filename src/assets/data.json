@@ -1,0 +1,8 @@
+[
+    { "id": "1", "title": "Winter Jacket", "imgUrl": "jacket-1.jpg", "price": "2.58", "bool": false },
+    { "id": "2", "title": "Men Designer Jacket", "imgUrl": "jacket-2.jpg", "price": "2.98", "bool": false },
+    { "id": "3", "title": "NEW MENS CROSSHATCH JACKET", "imgUrl": "jacket-4.jpg", "price": "5.98", "bool": false },
+    { "id": "4", "title": "Cotton Plain Shirt For Men", "imgUrl": "shirt-1.jpg", "price": "3.58", "bool": false },
+    { "id": "5", "title": "Ultrathin Soft Shirts Mens", "imgUrl": "shirt-2.jpg", "price": "2.08", "bool": false },
+    { "id": "6", "title": "Autumn 17 Fashion Brand Cotton", "imgUrl": "autumn-2017-fashion-brand-cotton.jpg", "price": "5.98", "bool": false }
+]
