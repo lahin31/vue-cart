@@ -54,7 +54,6 @@ export default {
             } else {
                 this.cart = [];
             }
-            console.log(this.cart);
         
         },
 
@@ -85,7 +84,6 @@ export default {
             const matchingProductIndex = this.cart.findIndex((item) => {
                 return item.id === product.id;
             });
-            console.log(matchingProductIndex);
 
             if (matchingProductIndex > -1) {
                 this.cart[matchingProductIndex].qty++;
@@ -109,7 +107,6 @@ export default {
             const matchingProductIndex = this.cart.findIndex((item) => {
                 return item.id == product.id;
             });
-            console.log(matchingProductIndex);
             localStorage.setItem('cart', JSON.stringify(this.cart));
             this.quantity =  this.cart.reduce((total, product) => {
                 return total - product.qty;
