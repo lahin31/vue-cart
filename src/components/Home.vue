@@ -44,9 +44,6 @@ export default {
       getPic(val) {
           return require('../assets/images/'+val);
       },
-      getCart() {
-          
-      },
       addToCart(product) {
           
           const matchProductIndex = this.cart.findIndex((item) => {
