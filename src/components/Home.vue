@@ -16,7 +16,7 @@
 
 <script>
 import { bus } from '../main';
-import Data from '../assets/data.json';
+import CartMixins from '../mixins/CartMixins.js';
 
 export default {
   name: "home",
@@ -28,53 +28,12 @@ export default {
           quantity: 0
       }
   },
-  created() {
-      this.items = Data;
-      if( localStorage && localStorage.getItem('cart')) {
-                this.cart = JSON.parse(localStorage.getItem('cart'));
-            } else {
-                this.cart = [];
-            }
-        this.quantity =  this.cart.reduce((total, product) => {
-                return total + product.qty;
-            }, 0);
-       bus.$emit('product-quant', this.quantity);
-  },
   methods: {
       getPic(val) {
           return require('../assets/images/'+val);
       },
-      addToCart(product) {
-          
-          const matchProductIndex = this.cart.findIndex((item) => {
-              return item.id === product.id;
-          });
-
-          if( matchProductIndex > -1) {
-              this.cart[matchProductIndex].qty++;
-          } else {
-              product.qty = 1;
-              this.cart.push(product);
-          }
-
-          localStorage.setItem( 'cart', JSON.stringify(this.cart));
-
-          this.quantity =  this.cart.reduce((total, product) => {
-            return total + product.qty;
-          }, 0);
-
-          bus.$emit('product-quant', this.quantity);
-          product.bool = true;
-          setTimeout(() => product.bool = false, 1000);
-      }
   },
-  computed: {
-        totalItems(){
-            return this.cart.reduce((total, product) => {
-                return total + product.qty;
-            }, 0);
-        }
-  }
+  mixins: [CartMixins]
 }
 </script>
 
