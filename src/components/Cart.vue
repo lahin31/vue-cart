@@ -26,7 +26,6 @@
 <script>
 import { bus } from '../main';
 import CartMixins from '../mixins/CartMixins.js';
-
 export default {
     data() {
         return {
@@ -45,16 +44,13 @@ table.table {
     width: 100%;
     background-color: #fff;
 }
-
 .table th, .table td {
     text-align: left;
     padding: 0.25em;
 }
-
 .table tr {
     border-bottom: 1px solid #DDD;
 }
-
 .removeBtn {
     background-color: red; 
     border: none;
@@ -66,7 +62,6 @@ table.table {
     font-size: 12px;
     cursor: pointer;
 }
-
 @media screen and (max-width: 800px) {
   tr { 
     display: flex; 

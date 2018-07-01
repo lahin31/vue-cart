@@ -1,17 +1,20 @@
 <template>
-     <section class="products">
-          <div class="product-card" v-for="(item, i) in items" :key="i">
-              <div class="product-image">
-                  <img :src="getPic(item.imgUrl)" :alt="item.title">
-              </div>
-              <div class="product-info">
-                  <h3>{{item.title}}</h3>
-                  <h6>${{item.price}}</h6>
-                  <button class="addToCartButton" @click="addToCart(item)" v-if="!item.bool">Add to cart</button>
-                  <button disabled="disabled" class="addedButton" v-if="item.bool">Added</button>
-              </div>
-          </div>
-      </section>
+    <div>
+        <input type="text" placeholder="Search" v-model="searchQuery">
+        <section class="products">
+            <div class="product-card" v-for="(item, i) in filterItems(items)" :key="i">
+                <div class="product-image">
+                    <img :src="getPic(item.imgUrl)" :alt="item.title">
+                </div>
+                <div class="product-info">
+                    <h3>{{item.title}}</h3>
+                    <h6>${{item.price}}</h6>
+                    <button class="addToCartButton" @click="addToCart(item)" v-if="!item.bool">Add to cart</button>
+                    <button disabled="disabled" class="addedButton" v-if="item.bool">Added</button>
+                </div>
+            </div>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -25,10 +28,17 @@ export default {
           items: [],
           quant: 0,
           cart: [],
-          quantity: 0
+          quantity: 0,
+          searchQuery: ''
       }
   },
   methods: {
+      filterItems(items) {
+          return this.items.filter(val => {
+              let regex = new RegExp('(' + this.searchQuery + ')', 'i');
+              return val.title.match(regex);
+          })
+      },
       getPic(val) {
           return require('../assets/images/'+val);
       },
@@ -87,6 +97,13 @@ a {
     display: inline-block;
     font-size: 12px;
     cursor: pointer;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
 }
 
 @media(max-width: 920px) {
