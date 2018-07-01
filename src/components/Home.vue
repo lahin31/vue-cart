@@ -35,7 +35,7 @@ export default {
   methods: {
       filterItems(items) {
           return this.items.filter(val => {
-              let regex = new RegExp('(' + this.searchQuery + ')', 'i');
+              let regex = new RegExp('(' + this.searchQuery + ')', 'i'); // using i flag of regular expression to check all lowercase and uppercase.
               return val.title.match(regex);
           })
       },
@@ -100,7 +100,7 @@ a {
 }
 
 input[type=text] {
-    width: 100%;
+    width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
